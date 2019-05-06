@@ -2,6 +2,7 @@ package com.example.eafor.cht_test;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -13,17 +14,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FetchData extends AsyncTask<Void, Void, Void> {
-    Context context;
-    public FetchData(Context context) {
-        this.context = context;
+    ListView view;
+    public FetchData(ListView view) {
+        this.view=view;
     }
 
     String data="";
-    JSONArray jsonArray;
-    List<Employee> localList = new ArrayList<>();
+    private JSONArray jsonArray;
+    private List<Employee> localList = new ArrayList<>();
     @Override
     protected Void doInBackground(Void... voids) {
 
@@ -61,8 +63,9 @@ public class FetchData extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-       MainActivity.empList = localList;
-       CustomAdapter adapter = new CustomAdapter(context,MainActivity.empList);
-       MainActivity.listView.setAdapter(adapter);
+       MainActivity.empList = new ArrayList<>(localList);
+       localList=null;
+       CustomAdapter adapter = new CustomAdapter();
+       view.setAdapter(adapter);
     }
 }

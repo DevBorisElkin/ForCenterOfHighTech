@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static ListView listView;
+    public ListView listView;
     public static List<Employee> empList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +24,15 @@ public class MainActivity extends AppCompatActivity {
 
        listView =findViewById(R.id.listView);
 
-       new FetchData(getApplicationContext()).execute();
+       new FetchData(listView).execute();
     }
 }
 
 class CustomAdapter extends BaseAdapter {
-    Context context;
-    List<Employee>list;
-    public CustomAdapter(Context context, List<Employee> list) {
-        this.context=context;
-        this.list=list;
+    private Context context;
+
+    public CustomAdapter() {
+        this.context = GlobalApplication.getAppContext();
     }
 
     @Override
@@ -59,9 +58,9 @@ class CustomAdapter extends BaseAdapter {
         TextView phoneNumber = row.findViewById(R.id.box_phoneNumber);
         TextView skills = row.findViewById(R.id.box_skills);
 
-        name.setText(list.get(position).name);
-        phoneNumber.setText("Phone number: "+list.get(position).phoneNumber);
-        skills.setText("Skills: "+list.get(position).skills);
+        name.setText(MainActivity.empList.get(position).name);
+        phoneNumber.setText("Phone number: "+MainActivity.empList.get(position).phoneNumber);
+        skills.setText("Skills: "+MainActivity.empList.get(position).skills);
 
         return row;
     }
