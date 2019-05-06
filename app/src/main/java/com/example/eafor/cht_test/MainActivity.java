@@ -17,6 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public ListView listView;
     public static List<Employee> empList = new ArrayList<>();
+    public boolean running = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,33 @@ public class MainActivity extends AppCompatActivity {
 
        listView =findViewById(R.id.listView);
 
-       new FetchData(listView).execute();
+       new FetchData().execute();
+       setAdapter();
+    }
+
+    public void setAdapter(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (running){
+                    try {
+                        Thread.sleep(10);
+                        if(empList.size()>0){
+                            running=false;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    CustomAdapter adapter = new CustomAdapter();
+                                    listView.setAdapter(adapter);
+                                }
+                            });
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 }
 

@@ -18,9 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FetchData extends AsyncTask<Void, Void, Void> {
-    ListView view;
-    public FetchData(ListView view) {
-        this.view=view;
+    public FetchData() {
     }
 
     String data="";
@@ -62,10 +60,7 @@ public class FetchData extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
        MainActivity.empList = new ArrayList<>(localList);
        localList=null;
-       CustomAdapter adapter = new CustomAdapter();
-       view.setAdapter(adapter);
     }
 }
