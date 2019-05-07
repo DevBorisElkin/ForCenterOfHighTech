@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="6dp"
-    android:paddingBottom="4dp"
+    android:paddingBottom="6dp"
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
     tools:layout_editor_absoluteY="25dp">
@@ -32,7 +32,7 @@
             <TextView
                 android:id="@+id/box_name"
                 android:layout_width="wrap_content"
-                android:layout_height="29dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="10dp"
@@ -46,7 +46,7 @@
             <TextView
                 android:id="@+id/box_skills"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
@@ -59,7 +59,7 @@
             <TextView
                 android:id="@+id/box_phoneNumber"
                 android:layout_width="wrap_content"
-                android:layout_height="18dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="10dp"

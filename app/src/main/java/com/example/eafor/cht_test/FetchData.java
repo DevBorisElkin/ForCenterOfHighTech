@@ -1,10 +1,6 @@
 package com.example.eafor.cht_test;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,9 +20,9 @@ public class FetchData extends AsyncTask<Void, Void, Void> {
     String data="";
     private JSONArray jsonArray;
     private List<Employee> localList = new ArrayList<>();
+
     @Override
     protected Void doInBackground(Void... voids) {
-
         try {
             URL url = new URL("http://www.mocky.io/v2/56fa31e0110000f920a72134");
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -40,7 +36,6 @@ public class FetchData extends AsyncTask<Void, Void, Void> {
 
             JSONObject jsonObject = new JSONObject(data);
             JSONObject jsonObjectCompany = new JSONObject(jsonObject.get("company").toString());
-          //  JSONObject jsonObjectEmployees = new JSONObject(jsonObjectCompany.get("employees").toString());
             jsonArray = new JSONArray(jsonObjectCompany.get("employees").toString());
 
             for(int i=0; i<jsonArray.length();i++){
