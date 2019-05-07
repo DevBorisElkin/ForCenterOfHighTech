@@ -3,6 +3,10 @@ package com.example.eafor.cht_test;
 import android.app.Application;
 import android.content.Context;
 
+/**
+ *  К заданию не относится, но, решил оставить здесь, интересный способ получить Context.
+ *
+ **/
 public class GlobalApplication extends Application {
 
     private static Context appContext;
