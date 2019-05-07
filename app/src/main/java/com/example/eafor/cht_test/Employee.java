@@ -1,5 +1,9 @@
 package com.example.eafor.cht_test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Employee {
@@ -26,27 +30,15 @@ public class Employee {
     }
 
     public static void sortArrayList(List<Employee>list){
-        Employee one, two;
-        boolean working=true;
-        while (working){
-            working=false;
-            for(int i=0;i<list.size();i++){
-                one = list.get(i);
-                two = new Employee("G","G","G");
-                if(i+1<list.size()){
-                    two=list.get(i+1);
-                }
-                if(one!=null&!two.getName().equals("G")){
-                    char first = one.name.charAt(0);
-                    char second = two.name.charAt(0);
-                    if((int)first>(int)second){
-                        list.set(i, two);
-                        list.set(i+1, one);
-                        working=true;
-                    }
-                }
+        Collections.sort(list, new Comparator<Employee>(){
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.getName().compareTo(o2.getName());
             }
-        }
+        });
+
     }
 }
+
+
 
